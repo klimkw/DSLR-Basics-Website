@@ -1,0 +1,134 @@
+{% extends 'layout.html' %}
+{% block head %}
+<style>
+      img {
+        width: 100%;
+      }
+
+      .frame_style {
+        padding: 4em;
+      }
+
+      .btn_row {
+        position: absolute;
+        margin: auto;
+        top: 8em; bottom: 0; left: 0; right: 0;
+      }
+      
+      .round_btn {
+        border-radius: 50%;
+        background-color: transparent;
+        width: 3em;
+        height: 3em;
+      }
+
+      .active_round {
+        border: solid grey;
+        color: grey;
+      }
+
+      .active_round:hover {
+        border: solid white;
+        color: white;
+      }
+
+      .previous {
+        position: absolute;
+        left: 1.5em;
+        top: 12em;
+      }
+      
+      .next {
+        position: absolute;
+        right: 1.5em;
+        top: 12em;
+      }
+
+      .deck {
+          padding: 3em;
+      }
+
+      .card{
+          background-color: transparent;
+          border: solid rgba(255, 255, 255, .25);
+      }
+
+     .card-body{
+         margin-top: 1em;
+         margin-bottom: 1em;
+     }
+
+     a {
+        color: rgba(255, 255, 255, .25);
+        text-decoration: none;
+     }
+
+     a:hover {
+        color: white;
+     }
+    
+     div.card:hover {
+        border: solid white;
+     }
+</style>
+{% endblock %}
+
+{% block body %}
+  <div class="btn_row">
+    <button type="button" class="previous round_btn active_round" data-bs-toggle="tooltip" data-bs-placement="top" title="Learn">&#8249;</button>
+    <button type="button" class="next round_btn active_round" data-bs-toggle="tooltip" data-bs-placement="top" title="Quiz">&#8250;</button>
+    <div class="container deck">
+        <div class="row">
+            <section class="col-3">
+                <a href="{{ url_for('landscape') }}">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ url_for('static', filename='experiment/landscape/MMM.JPG') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Landscape</h5>
+                        <p class="card-text"><i>Natural or man-made features</i></p>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            <section class="col-3">
+                <a href="{{ url_for('portrait') }}">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ url_for('static', filename='experiment/portrait/MMM.JPG') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Portrait</h5>
+                        <p class="card-text"><i>Person/object as the subject</i></p>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            <section class="col-3">
+                <a href="{{ url_for('dynamic') }}">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ url_for('static', filename='experiment/dynamic/MMM.JPG') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Dynamic</h5>
+                        <p class="card-text"><i>Objects in motion</i></p>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            <section class="col-3">
+                <a href="{{ url_for('lowlight') }}">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ url_for('static', filename='experiment/lowlight/LLL.JPG') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Lowlight</h5>
+                        <p class="card-text"><i>Scenes with low-to-no light</i></p>
+                        </div>
+                    </div>
+                </a>
+            </section>
+        </div>
+    </div>
+    <h3>Experiment with DSLR settings on each of these four photos!</h3>
+  </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='exp_home.js') }}"></script>
+{% endblock %}

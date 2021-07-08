@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <style>
+      .btn_row {
+        position: absolute;
+        margin: auto;
+        top: 8em; bottom: 0; left: 0; right: 0;
+        z-index: 0;
+      }
+      
+      .round_btn {
+        border-radius: 50%;
+        background-color: transparent;
+        width: 3em;
+        height: 3em;
+      }
+
+      .active_round {
+        border: solid grey;
+        color: grey;
+      }
+
+      .active_round:hover {
+        border: solid white;
+        color: white;
+      }
+
+      .previous {
+        position: absolute;
+        left: 1.5em;
+        top: 12em;
+      }
+
+      .choices {
+        width: 10em;
+        margin: 1em;
+      }
+
+      .quiz_frame {
+        z-index: 10;
+        padding: 3em;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .quiz-welcome {
+        padding-top: 4em;
+      }
+
+      .img_frame {
+        max-width: 100%;
+        height: 40%;
+      }
+    </style>
+{% endblock %}
+ 
+{% block body %}
+  <div class="btn_row">
+    <button type="button" class="previous round_btn active_round" data-bs-toggle="tooltip" data-bs-placement="top" title="Experiment">&#8249;</button>
+  </div>
+  <div class="quiz_frame">
+    <h1 class="quiz-welcome">Quiz</h1>
+    <p class="lead">Prove you have mastered the basics of DSLR by answering these 5 questions</p>
+    <p class="lead">
+      <button class="btn btn-lg btn-secondary fw-bold border-white bg-white" id="start">Start</button>
+    </p>
+  </div>
+{% endblock %}
+
+
+
+{% block script %}
+<script src="{{ url_for('static', filename='quiz.js') }}"></script>
+{% endblock %}

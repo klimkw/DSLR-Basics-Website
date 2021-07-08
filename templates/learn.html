@@ -1,0 +1,223 @@
+{% extends 'layout.html' %}
+{% block head %}  
+  <style>
+      img {
+        width: 100%;
+      }
+
+      .frame_style {
+        padding: 2em;
+      }
+
+      .btn_row {
+        position: absolute;
+        margin: auto;
+        top: 8em; bottom: 0; left: 0; right: 0;
+      }
+      
+      .round_btn {
+        border-radius: 50%;
+        background-color: transparent;
+        width: 3em;
+        height: 3em;
+      }
+
+      .active_round {
+        border: solid grey;
+        color: grey;
+      }
+
+      .active_round:hover {
+        border: solid white;
+        color: white;
+      }
+
+      .previous {
+        position: absolute;
+        left: 1.5em;
+        top: 12em;
+      }
+      
+      .next {
+        position: absolute;
+        right: 1.5em;
+        top: 12em;
+      }
+
+      .learn_frame {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #iso_img {
+        position: absolute;
+        width: 15em;
+        margin: 0;
+        top: 3.5em;
+      }
+
+      #exp_img {
+        position: absolute;
+        width: 15em;
+        margin: 0;
+        top: 17em;
+      }
+
+      #ss_img {
+        position: absolute;
+        width: 15em;
+        margin: 0;
+        left: 8em;
+        top: 17em;
+      }
+
+      #f_img {
+        position: absolute;
+        width: 15em;
+        margin: 0;
+        top: 17em;
+        right: 8em;
+      }
+
+      .zoom {
+        cursor: pointer;
+        transition: transform .2s;
+      }
+
+      .zoom:hover {
+        transform: scale(1.1);
+        z-index: 1;
+      }
+
+      .hide {
+        /* display: none; */
+        transition: opacity 0.5s ease-in-out;
+        -webkit-transition: opacity 0.5s ease-in-out;
+        -moz-transition: opacity 0.5s ease-in-out;
+        -ms-transition: opacity 0.5s ease-in-out;
+        -o-transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+        
+      }
+
+      h1 {
+        padding-top: 1em;
+      }
+
+      @keyframes animate_left {
+        0% {left: 16em; width: 17em;}
+        100% {left: 0; width: 22em;}
+      }
+
+      @keyframes animate_up {
+        0% {top:17em;}
+        100% {top:3.5em;}
+      }
+
+      @keyframes animate_near_left {
+        0% {left: 8em; width: 17em;}
+        100% {left: 0; width: 22em;}
+      }
+
+      @keyframes animate_far_left {
+        0% {left: 24em; width: 17em;}
+        100% {left: 0; width: 22em;}
+      }
+
+      .isoAnimate {
+        z-index: 1;
+        animation: animate_left;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+      }
+
+      .expAnimate {
+        z-index: 1;
+        animation: animate_left, animate_up;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+      }
+
+      .ssAnimate{
+        z-index: 1;
+        animation: animate_up, animate_near_left;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+      }
+
+      .fAnimate{
+        z-index: 1;
+        animation: animate_far_left, animate_up;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+      }
+
+      .learn_dcp {
+        position: absolute;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        z-index: -1;
+        text-align: left;
+        padding-top: 3em;
+        padding-left: 3em;
+      }
+
+      .iso_color {
+        color: #9c146f;
+      }
+
+      .exp_color {
+        color: #d0ad6b;
+      }
+      
+      .ss_color {
+        color: #6d328e;
+      }
+
+      .f_color {
+        color: #444197;
+      }
+      
+      .back_loc {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 20%;
+        align-items: center;
+      }
+
+      .grey{
+        color:grey;
+      }
+    </style>
+{% endblock %}
+
+{% block body %}
+  <div class="btn_row">
+    <button type="button" class="previous round_btn active_round" data-bs-toggle="tooltip" data-bs-placement="top" title="Home">&#8249;</button>
+    <button type="button" class="next round_btn active_round" data-bs-toggle="tooltip" data-bs-placement="top" title="Experiment">&#8250;</button>
+  </div>
+
+  <h1 id="learn_title">The Exposure Triangle</h1>
+  <small class="grey" id="ctfom">Click each triangle to find out more!</small>
+  <div class="learn_frame">
+    <img src="{{ url_for('static', filename='learn/iso.png') }}" id="iso_img" class="zoom">
+    <img src="{{ url_for('static', filename='learn/ss.png') }}" id="ss_img" class="zoom">
+    <img src="{{ url_for('static', filename='learn/f.png') }}" id="f_img" class="zoom">
+    <img src="{{ url_for('static', filename='learn/exp.png') }}" id="exp_img" class="zoom">
+    <div class="learn_dcp"></div>
+    <div class="back_loc"></div>
+  </div>
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+{% block script %}
+  <script src="{{ url_for('static', filename='learn.js')}}"></script>
+{% endblock %}

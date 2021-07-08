@@ -1,0 +1,26 @@
+{
+    "num_questions": 1,
+    "questions":[
+        {
+            "q_num": 1,
+            "has_img" : false,
+            "q_img": "insert relative_file_path here",
+            "q_question": "Which setting should you adjust to freeze the action?",
+            "num_choices": 3,
+            "choices": [
+                {
+                    "answer": "Aperture",
+                    "correct": false
+                },
+                {
+                    "answer": "Shutter Speed",
+                    "correct": true
+                },
+                {
+                    "answer": "ISO",
+                    "correct": false
+                }
+            ]
+        }
+    ]
+}
